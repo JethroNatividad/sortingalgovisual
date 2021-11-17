@@ -2,14 +2,18 @@ import './App.css';
 import React, { useEffect, useState } from 'react'
 import Bar from './Bar';
 import AppBar from '@mui/material/AppBar'
-import { FormControl, InputLabel, MenuItem, Select, Toolbar, Typography } from '@mui/material';
+import { Button, FormControl, InputLabel, MenuItem, Select, Toolbar, Typography } from '@mui/material';
 import useStyles from './App.styles'
+import RandomArrayNumberGenerator from './Functions/rang'
 
 function App() {
   const classes = useStyles()
   const sortAlgorithms = [{ name: 'Bubble Sort', id: 'bubblesort' }, { name: 'Insertion Sort', id: 'insertionsort' }]
   const [currentAlgorithm, setCurrentAlgorithm] = useState(sortAlgorithms[0].id)
-  const [arr, setArr] = useState([200, 50, 70, 90, 80])
+  // Make random number on first render
+  const [arr, setArr] = useState(RandomArrayNumberGenerator(15, 50, 200))
+
+
 
   // const [currentCompareSteps, setCurrentCompareSteps] = useState([0, 1])
   // const [currentStep, setCurrentStep] = useState(0)
@@ -83,22 +87,25 @@ function App() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Visual Sorting Algorithms
           </Typography>
-          <FormControl >
-            <InputLabel variant="standard" htmlFor="uncontrolled-native">
+          <Button variant='outlined' color="inherit">Random Numbers</Button>
+          {/* <FormControl> */}
+          {/* <InputLabel variant="standard" htmlFor="uncontrolled-native">
               Algorithm
-            </InputLabel>
-            <Select
-              variant='standard'
-              value={currentAlgorithm}
-              label="Algorithm"
-              onChange={handleAlgoChange}
-            >
-              {sortAlgorithms.map(i => (
-                <MenuItem value={i.id}>{i.name}</MenuItem>
-              ))}
+            </InputLabel> */}
+          <Select
+            // style={{ color: 'white' }}
+            className={classes.select}
+            variant='standard'
+            value={currentAlgorithm}
+            // label="Algorithm"
+            onChange={handleAlgoChange}
+          >
+            {sortAlgorithms.map(i => (
+              <MenuItem value={i.id}>{i.name}</MenuItem>
+            ))}
 
-            </Select>
-          </FormControl>
+          </Select>
+          {/* </FormControl> */}
         </Toolbar>
       </AppBar>
       {/* App bar */}
@@ -109,7 +116,7 @@ function App() {
           <Bar num={number} color={'black'} />
         ))}
       </div>
-    </div>
+    </div >
   )
 }
 
