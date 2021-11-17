@@ -8,7 +8,7 @@ const Steps = () => {
     return (
         <div>
             <Button variant="outlined"><ArrowBackIos /></Button>
-            <Button variant="outlined"><PlayArrow /></Button>
+            <Button variant="outlined" disabled><PlayArrow /></Button>
             <Button variant="outlined"><ArrowForwardIos /></Button>
         </div>
     )

@@ -16,7 +16,6 @@ function App() {
   const [arr, setArr] = useState(RandomArrayNumberGenerator(15, 50, 200))
   const MakeRandomArr = () => {
     setArr(RandomArrayNumberGenerator(15, 50, 200))
-    console.log(theme.palette.primary)
   }
 
   // const [currentCompareSteps, setCurrentCompareSteps] = useState([0, 1])
@@ -92,10 +91,7 @@ function App() {
             Visual Sorting Algorithms
           </Typography>
           <Button variant='outlined' color="inherit" onClick={MakeRandomArr}>Random Numbers</Button>
-          {/* <FormControl> */}
-          {/* <InputLabel variant="standard" htmlFor="uncontrolled-native">
-              Algorithm
-            </InputLabel> */}
+
           <Select
             // style={{ color: 'white' }}
             className={classes.select}
