@@ -1528,6 +1528,13 @@
     prop-types "^15.7.2"
     react-is "^17.0.2"
 
+"@mui/icons-material@^5.1.1":
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/@mui/icons-material/-/icons-material-5.1.1.tgz#f3f44275855e924cdf5e379da87299d633854b53"
+  integrity sha512-tLM1/QhVAgcetEscZa8BlM1IRRaoNxjhFzQOIs5wAuuVhHSrB8zZCKugpZVIZ1nKyQqLgVEa9TbtWpo5jLrnRQ==
+  dependencies:
+    "@babel/runtime" "^7.16.3"
+
 "@mui/material@^5.1.1":
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/@mui/material/-/material-5.1.1.tgz#72ba1ce8c253697df96e24cd1f555d5c2569376d"
@@ -3348,9 +3355,9 @@ caniuse-api@^3.0.0:
     lodash.uniq "^4.5.0"
 
 caniuse-lite@^1.0.0, caniuse-lite@^1.0.30000981, caniuse-lite@^1.0.30001109, caniuse-lite@^1.0.30001125, caniuse-lite@^1.0.30001181:
-  version "1.0.30001191"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001191.tgz#bacb432b6701f690c8c5f7c680166b9a9f0843d9"
-  integrity sha512-xJJqzyd+7GCJXkcoBiQ1GuxEiOBCLQ0aVW9HMekifZsAVGdj5eJ4mFB9fEhSHipq9IOk/QXFJUiIr9lZT+EsGw==
+  version "1.0.30001282"
+  resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001282.tgz"
+  integrity sha512-YhF/hG6nqBEllymSIjLtR2iWDDnChvhnVJqp+vloyt2tEHFG1yBR+ac2B/rOw0qOK0m0lEXU2dv4E/sMk5P9Kg==
 
 capture-exit@^2.0.0:
   version "2.0.0"

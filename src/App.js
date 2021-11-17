@@ -2,18 +2,22 @@ import './App.css';
 import React, { useEffect, useState } from 'react'
 import Bar from './Bar';
 import AppBar from '@mui/material/AppBar'
-import { Button, FormControl, InputLabel, MenuItem, Select, Toolbar, Typography } from '@mui/material';
+import { Button, createTheme, FormControl, InputLabel, MenuItem, Select, Toolbar, Typography } from '@mui/material';
 import useStyles from './App.styles'
 import RandomArrayNumberGenerator from './Functions/rang'
+import Steps from './Steps';
 
 function App() {
+  const theme = createTheme()
   const classes = useStyles()
   const sortAlgorithms = [{ name: 'Bubble Sort', id: 'bubblesort' }, { name: 'Insertion Sort', id: 'insertionsort' }]
   const [currentAlgorithm, setCurrentAlgorithm] = useState(sortAlgorithms[0].id)
   // Make random number on first render
   const [arr, setArr] = useState(RandomArrayNumberGenerator(15, 50, 200))
-
-
+  const MakeRandomArr = () => {
+    setArr(RandomArrayNumberGenerator(15, 50, 200))
+    console.log(theme.palette.primary)
+  }
 
   // const [currentCompareSteps, setCurrentCompareSteps] = useState([0, 1])
   // const [currentStep, setCurrentStep] = useState(0)
@@ -87,7 +91,7 @@ function App() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Visual Sorting Algorithms
           </Typography>
-          <Button variant='outlined' color="inherit">Random Numbers</Button>
+          <Button variant='outlined' color="inherit" onClick={MakeRandomArr}>Random Numbers</Button>
           {/* <FormControl> */}
           {/* <InputLabel variant="standard" htmlFor="uncontrolled-native">
               Algorithm
@@ -113,8 +117,14 @@ function App() {
       {/* Show Algorithm */}
       <div className={classes.barContainer}>
         {arr.map((number, i) => (
-          <Bar num={number} color={'black'} />
+          <Bar num={number} color={theme.palette.primary.main} />
         ))}
+      </div>
+
+      {/* Steps */}
+
+      <div className={classes.stepContainer}>
+        <Steps />
       </div>
     </div >
   )
