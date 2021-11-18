@@ -7,6 +7,8 @@ import useStyles from './App.styles'
 import RandomArrayNumberGenerator from './Functions/rang'
 import Steps from './Steps';
 import algorithms from './Algorithms/main';
+import { timeout } from './Functions/helpers';
+
 
 function App() {
   const theme = createTheme()
@@ -48,70 +50,14 @@ function App() {
     setCurrentStepIndex(currentStepIndex - 1)
   }
 
-  // const [currentCompareSteps, setCurrentCompareSteps] = useState([0, 1])
-  // const [currentStep, setCurrentStep] = useState(0)
-  // const [arrSteps, setArrSteps] = useState([arr])
+  // function that add 1 to current step index by a delay till max length
+  const playStep = async () => {
+    for (let i = currentStepIndex + 1; i < steps.length; i++) {
+      setCurrentStepIndex(i)
+      await timeout(100)
+    }
+  }
 
-  // const generateArrSteps = (arr, setArrSteps, setCurrentCompareSteps) => {
-  //   const newArrSteps = [arr]
-  //   const newCurrentCompareSteps = [[0, 1]]
-  //   const bubbleSort = (a) => {
-  //     for (let i = 0; i < a.length; i++) {
-  //     }
-  //     console.log('here')
-  //     for (let i = 0; i < a.length; i++) {
-  //       let noswaps = true
-  //       for (let j = 1; j < a.length; j++) {
-
-  //         if (a[i] > a[i + j]) {
-  //           // swap
-  //           let temp = a[i]
-  //           a[i] = a[i + j]
-  //           a[i + j] = temp
-  //           noswaps = false
-  //           // console.log(a, i, j)
-  //           // console.log(a, i, i + j)
-  //         }
-  //         newArrSteps.push([...a], [...a])
-  //         newCurrentCompareSteps.push([i, i + j], [-1, -1])
-  //         // console.log(a)
-  //       }
-  //       if (noswaps) break;
-  //     }
-  //   }
-  //   bubbleSort(arr.slice())
-  //   setArrSteps(newArrSteps)
-  //   setCurrentCompareSteps(newCurrentCompareSteps)
-  // }
-
-  // useEffect(() => {
-  //   generateArrSteps(arr, setArrSteps, setCurrentCompareSteps)
-  // }, [])
-
-  // useEffect(() => {
-  //   setArr(arrSteps[currentStep])
-  // }, [currentStep])
-
-  // const moveStepForward = () => {
-  //   setCurrentStep(currentStep + 1)
-  // }
-  // const moveStepBackward = () => {
-  //   setCurrentStep(currentStep - 1)
-  // }
-  // return (
-  //   <div className="App">
-  //     <div style={{ display: 'flex', alignItems: 'end', justifyContent: 'center' }}>
-  //       {/* {JSON.stringify(arrSteps)} */}
-  //       {arr.map((number, i) => (
-  //         <Bar num={number} color={i === currentCompareSteps[currentStep][0] ? 'green' : i === currentCompareSteps[currentStep][1] ? 'red' : 'black'} />
-  //       ))}
-  //     </div>
-  //     <div>
-  //       <button disabled={currentStep === 0} onClick={moveStepBackward}>{"<"}</button>
-  //       <button disabled={currentStep === arrSteps.length - 1} onClick={moveStepForward}>{">"}</button>
-  //     </div>
-  //   </div>
-  // );
   const handleAlgoChange = (e) => setCurrentAlgorithm(e.target.value)
   return (
     <div>
@@ -150,7 +96,7 @@ function App() {
       {/* Steps */}
 
       <div className={classes.stepContainer}>
-        <Steps currentStepIndex={currentStepIndex} nextStep={nextStep} prevStep={prevStep} stepsLen={steps.length} />
+        <Steps currentStepIndex={currentStepIndex} nextStep={nextStep} prevStep={prevStep} playStep={playStep} stepsLen={steps.length} />
       </div>
     </div >
   )
