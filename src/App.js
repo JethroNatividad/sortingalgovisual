@@ -17,14 +17,22 @@ function App() {
   const [arr, setArr] = useState(RandomArrayNumberGenerator(15, 50, 200))
   const [steps, setSteps] = useState([[...arr]])
   const [currentStepIndex, setCurrentStepIndex] = useState(0)
+  const [compareStepsIndexes, setCompareStepsIndexes] = useState([-1, -1])
 
   const MakeRandomArr = () => {
-    setArr(RandomArrayNumberGenerator(15, 50, 200))
+    const randomArr = RandomArrayNumberGenerator(15, 50, 200)
+    setArr(randomArr)
+    const { steps, compareSteps } = algorithms[currentAlgorithm](randomArr)
+    setSteps(steps)
+    setCompareStepsIndexes(compareSteps)
+    setCurrentStepIndex(0)
   }
 
   // generates the steps of the arr
   useEffect(() => {
-    setSteps(algorithms[currentAlgorithm]([7, 1, 3, 6]))
+    const { steps, compareSteps } = algorithms[currentAlgorithm](arr)
+    setSteps(steps)
+    setCompareStepsIndexes(compareSteps)
   }, [currentAlgorithm])
 
   // syncs the steps with the index
@@ -135,7 +143,7 @@ function App() {
       {/* Show Algorithm */}
       <div className={classes.barContainer}>
         {arr.map((number, i) => (
-          <Bar num={number} color={theme.palette.primary.main} />
+          <Bar num={number} color={i === compareStepsIndexes[currentStepIndex][0] ? theme.palette.success.main : i === compareStepsIndexes[currentStepIndex][1] ? theme.palette.warning.main : theme.palette.primary.main} />
         ))}
       </div>
 
