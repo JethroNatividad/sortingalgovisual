@@ -1,5 +1,4 @@
 # Todo
 
--   Implement Bubble sort
--   Save bubble sort steps to array
--   Add move steps
+-   add stop playing step
+-   replace the wrong bubble sort :D
