@@ -6,6 +6,7 @@ import { Button, createTheme, FormControl, InputLabel, MenuItem, Select, Toolbar
 import useStyles from './App.styles'
 import RandomArrayNumberGenerator from './Functions/rang'
 import Steps from './Steps';
+import algorithms from './Algorithms/main';
 
 function App() {
   const theme = createTheme()
@@ -14,8 +15,29 @@ function App() {
   const [currentAlgorithm, setCurrentAlgorithm] = useState(sortAlgorithms[0].id)
   // Make random number on first render
   const [arr, setArr] = useState(RandomArrayNumberGenerator(15, 50, 200))
+  const [steps, setSteps] = useState([[...arr]])
+  const [currentStepIndex, setCurrentStepIndex] = useState(0)
+
   const MakeRandomArr = () => {
     setArr(RandomArrayNumberGenerator(15, 50, 200))
+  }
+
+  // generates the steps of the arr
+  useEffect(() => {
+    setSteps(algorithms[currentAlgorithm]([7, 1, 3, 6]))
+  }, [currentAlgorithm])
+
+  // syncs the steps with the index
+  useEffect(() => {
+    setArr(steps[currentStepIndex])
+  }, [currentStepIndex])
+
+  const nextStep = () => {
+    setCurrentStepIndex(currentStepIndex + 1)
+  }
+
+  const prevStep = () => {
+    setCurrentStepIndex(currentStepIndex - 1)
   }
 
   // const [currentCompareSteps, setCurrentCompareSteps] = useState([0, 1])
@@ -120,7 +142,7 @@ function App() {
       {/* Steps */}
 
       <div className={classes.stepContainer}>
-        <Steps />
+        <Steps currentStepIndex={currentStepIndex} nextStep={nextStep} prevStep={prevStep} stepsLen={steps.length} />
       </div>
     </div >
   )

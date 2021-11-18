@@ -3,13 +3,13 @@ import React from 'react'
 import useStyles from './Steps.styles'
 import { ArrowBackIos, ArrowForwardIos, PlayArrow } from '@mui/icons-material';
 
-const Steps = () => {
+const Steps = ({ currentStepIndex, nextStep, prevStep, stepsLen }) => {
     const classes = useStyles()
     return (
         <div>
-            <Button variant="outlined"><ArrowBackIos /></Button>
+            <Button variant="outlined" onClick={prevStep} disabled={currentStepIndex === 0}><ArrowBackIos /></Button>
             <Button variant="outlined" disabled><PlayArrow /></Button>
-            <Button variant="outlined"><ArrowForwardIos /></Button>
+            <Button variant="outlined" onClick={nextStep} disabled={currentStepIndex === stepsLen - 1}><ArrowForwardIos /></Button>
         </div>
     )
 }
