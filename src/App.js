@@ -2,7 +2,7 @@ import './App.css';
 import React, { useEffect, useState } from 'react'
 import Bar from './Bar';
 import AppBar from '@mui/material/AppBar'
-import { Button, createTheme, FormControl, InputLabel, MenuItem, Select, Toolbar, Typography } from '@mui/material';
+import { Button, createTheme, FormControl, InputLabel, MenuItem, Select, Slider, Toolbar, Typography } from '@mui/material';
 import useStyles from './App.styles'
 import RandomArrayNumberGenerator from './Functions/rang'
 import Steps from './Steps';
@@ -20,6 +20,7 @@ function App() {
   const [steps, setSteps] = useState([[...arr]])
   const [currentStepIndex, setCurrentStepIndex] = useState(0)
   const [compareStepsIndexes, setCompareStepsIndexes] = useState([-1, -1])
+  const [speedMs, setSpeedMs] = useState(100)
 
   const MakeRandomArr = () => {
     const randomArr = RandomArrayNumberGenerator(15, 50, 200)
@@ -51,10 +52,11 @@ function App() {
   }
 
   // function that add 1 to current step index by a delay till max length
-  const playStep = async () => {
+  const playStep = async (speed) => {
+    setCurrentStepIndex(0)
     for (let i = currentStepIndex + 1; i < steps.length; i++) {
       setCurrentStepIndex(i)
-      await timeout(100)
+      await timeout(speed)
     }
   }
 
@@ -66,6 +68,21 @@ function App() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Visual Sorting Algorithms
           </Typography>
+
+          <Slider
+            size="small"
+            color="secondary"
+            value={speedMs}
+            onChange={(e, value) => {
+              setSpeedMs(value)
+            }}
+            min={50}
+            max={1000}
+            // step={100}
+            marks={[{ value: 50, label: '50ms' }, { value: 100, label: '100ms' }, { value: 1000, label: '1s' }]}
+            valueLabelDisplay="on"
+          />
+
           <Button variant='outlined' color="inherit" onClick={MakeRandomArr}>Random Numbers</Button>
 
           <Select
@@ -96,7 +113,7 @@ function App() {
       {/* Steps */}
 
       <div className={classes.stepContainer}>
-        <Steps currentStepIndex={currentStepIndex} nextStep={nextStep} prevStep={prevStep} playStep={playStep} stepsLen={steps.length} />
+        <Steps currentStepIndex={currentStepIndex} nextStep={nextStep} prevStep={prevStep} playStep={() => playStep(speedMs)} stepsLen={steps.length} />
       </div>
     </div >
   )
