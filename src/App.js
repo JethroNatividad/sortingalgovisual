@@ -20,15 +20,15 @@ function App() {
   const [steps, setSteps] = useState([[...arr]])
   const [currentStepIndex, setCurrentStepIndex] = useState(0)
   const [compareStepsIndexes, setCompareStepsIndexes] = useState([-1, -1])
-  const [speedMs, setSpeedMs] = useState(100)
+  const [speedMs, setSpeedMs] = useState(50)
 
   const MakeRandomArr = () => {
+    setCurrentStepIndex(0)
     const randomArr = RandomArrayNumberGenerator(15, 50, 200)
     setArr(randomArr)
     const { steps, compareSteps } = algorithms[currentAlgorithm](randomArr)
     setSteps(steps)
     setCompareStepsIndexes(compareSteps)
-    setCurrentStepIndex(0)
   }
 
   // generates the steps of the arr
@@ -69,21 +69,8 @@ function App() {
             Visual Sorting Algorithms
           </Typography>
 
-          <Slider
-            size="small"
-            color="secondary"
-            value={speedMs}
-            onChange={(e, value) => {
-              setSpeedMs(value)
-            }}
-            min={50}
-            max={1000}
-            // step={100}
-            marks={[{ value: 50, label: '50ms' }, { value: 100, label: '100ms' }, { value: 1000, label: '1s' }]}
-            valueLabelDisplay="on"
-          />
 
-          <Button variant='outlined' color="inherit" onClick={MakeRandomArr}>Random Numbers</Button>
+
 
           <Select
             // style={{ color: 'white' }}
@@ -114,6 +101,28 @@ function App() {
 
       <div className={classes.stepContainer}>
         <Steps currentStepIndex={currentStepIndex} nextStep={nextStep} prevStep={prevStep} playStep={() => playStep(speedMs)} stepsLen={steps.length} />
+      </div>
+
+      {/* Speed Slider below */}
+      <div className={classes.bottomContainer}>
+        <div className={classes.sliderContainer}>
+
+          <Slider
+            size="small"
+            color="secondary"
+            value={speedMs}
+            onChange={(e, value) => {
+              setSpeedMs(value)
+            }}
+            min={50}
+            max={1000}
+            // step={100}
+            marks={[{ value: 50, label: '50ms' }, { value: 1000, label: '1s' }]}
+            valueLabelDisplay="on"
+          />
+        </div>
+        <Button variant='outlined' color="primary" onClick={MakeRandomArr}>Randomize</Button>
+
       </div>
     </div >
   )

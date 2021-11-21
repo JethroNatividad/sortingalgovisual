@@ -23,6 +23,14 @@ const useStyles = makeStyles((theme) => ({
         },
         color: "#fff"
     },
+    bottomContainer: {
+        margin: '20px',
+        display: 'flex',
+    },
+    sliderContainer: {
+        width: '10%',
+        padding: '0px 20px'
+    }
 
 }));
 
