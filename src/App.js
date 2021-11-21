@@ -46,7 +46,6 @@ function App() {
 
   // check isPlaying and plays from current step
   useEffect(() => {
-
     async function play() {
       if (isPlaying && currentStepIndex < steps.length - 1) {
         await timeout(speedMs)
@@ -64,15 +63,6 @@ function App() {
     setCurrentStepIndex(currentStepIndex - 1)
   }
 
-
-  // function that add 1 to current step index by a delay till max length
-  // const playStep = async (speed) => {
-  //   setCurrentStepIndex(0)
-  //   for (let i = currentStepIndex + 1; i < steps.length; i++) {
-  //     setCurrentStepIndex(i)
-  //     await timeout(speed)
-  //   }
-  // }
   const playStep = () => {
     setIsPlaying(!isPlaying)
   }
