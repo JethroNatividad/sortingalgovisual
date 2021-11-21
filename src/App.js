@@ -69,6 +69,10 @@ function App() {
   const togglePlayStep = () => {
     setIsPlaying(!isPlaying)
   }
+  const replayStep = () => {
+    setCurrentStepIndex(0)
+    setIsPlaying(true)
+  }
 
   const handleAlgoChange = (e) => setCurrentAlgorithm(e.target.value)
   return (
@@ -111,7 +115,9 @@ function App() {
           prevStep={prevStep}
           togglePlayStep={togglePlayStep}
           stepsLen={steps.length}
-          isPlaying={isPlaying} />
+          isPlaying={isPlaying}
+          replayStep={replayStep}
+        />
       </div>
 
       {/* Speed Slider below */}
