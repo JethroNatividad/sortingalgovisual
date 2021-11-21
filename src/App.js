@@ -21,6 +21,7 @@ function App() {
   const [currentStepIndex, setCurrentStepIndex] = useState(0)
   const [compareStepsIndexes, setCompareStepsIndexes] = useState([-1, -1])
   const [speedMs, setSpeedMs] = useState(50)
+  const [isPlaying, setIsPlaying] = useState(false)
 
   const MakeRandomArr = () => {
     const randomArr = RandomArrayNumberGenerator(15, 50, 200)
@@ -43,6 +44,18 @@ function App() {
     setArr(steps[currentStepIndex])
   }, [currentStepIndex])
 
+  // check isPlaying and plays from current step
+  useEffect(() => {
+
+    async function play() {
+      if (isPlaying && currentStepIndex < steps.length - 1) {
+        await timeout(speedMs)
+        setCurrentStepIndex(currentStepIndex + 1)
+      }
+    }
+    play()
+  }, [isPlaying, currentStepIndex, speedMs])
+
   const nextStep = () => {
     setCurrentStepIndex(currentStepIndex + 1)
   }
@@ -51,13 +64,17 @@ function App() {
     setCurrentStepIndex(currentStepIndex - 1)
   }
 
+
   // function that add 1 to current step index by a delay till max length
-  const playStep = async (speed) => {
-    setCurrentStepIndex(0)
-    for (let i = currentStepIndex + 1; i < steps.length; i++) {
-      setCurrentStepIndex(i)
-      await timeout(speed)
-    }
+  // const playStep = async (speed) => {
+  //   setCurrentStepIndex(0)
+  //   for (let i = currentStepIndex + 1; i < steps.length; i++) {
+  //     setCurrentStepIndex(i)
+  //     await timeout(speed)
+  //   }
+  // }
+  const playStep = () => {
+    setIsPlaying(!isPlaying)
   }
 
   const handleAlgoChange = (e) => setCurrentAlgorithm(e.target.value)
