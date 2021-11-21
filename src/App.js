@@ -109,7 +109,7 @@ function App() {
 
           <Slider
             size="small"
-            color="secondary"
+            color="primary"
             value={speedMs}
             onChange={(e, value) => {
               setSpeedMs(value)
