@@ -63,7 +63,7 @@ function App() {
     setCurrentStepIndex(currentStepIndex - 1)
   }
 
-  const playStep = () => {
+  const togglePlayStep = () => {
     setIsPlaying(!isPlaying)
   }
 
@@ -75,10 +75,6 @@ function App() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Visual Sorting Algorithms
           </Typography>
-
-
-
-
           <Select
             // style={{ color: 'white' }}
             className={classes.select}
@@ -107,7 +103,12 @@ function App() {
       {/* Steps */}
 
       <div className={classes.stepContainer}>
-        <Steps currentStepIndex={currentStepIndex} nextStep={nextStep} prevStep={prevStep} playStep={() => playStep(speedMs)} stepsLen={steps.length} />
+        <Steps currentStepIndex={currentStepIndex}
+          nextStep={nextStep}
+          prevStep={prevStep}
+          togglePlayStep={togglePlayStep}
+          stepsLen={steps.length}
+          isPlaying={isPlaying} />
       </div>
 
       {/* Speed Slider below */}
