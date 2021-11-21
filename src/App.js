@@ -50,7 +50,10 @@ function App() {
       if (isPlaying && currentStepIndex < steps.length - 1) {
         await timeout(speedMs)
         setCurrentStepIndex(currentStepIndex + 1)
+      } else {
+        setIsPlaying(false)
       }
+
     }
     play()
   }, [isPlaying, currentStepIndex, speedMs])
