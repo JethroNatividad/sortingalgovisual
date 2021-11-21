@@ -23,12 +23,12 @@ function App() {
   const [speedMs, setSpeedMs] = useState(50)
 
   const MakeRandomArr = () => {
-    setCurrentStepIndex(0)
     const randomArr = RandomArrayNumberGenerator(15, 50, 200)
     setArr(randomArr)
     const { steps, compareSteps } = algorithms[currentAlgorithm](randomArr)
     setSteps(steps)
     setCompareStepsIndexes(compareSteps)
+    setCurrentStepIndex(0)
   }
 
   // generates the steps of the arr

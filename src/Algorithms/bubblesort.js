@@ -12,23 +12,25 @@ import swapArr from "../Functions/helpers"
 const bubbleSort = (arr) => {
     // loop each array data
     // [7,1,3,6]
-    const steps = [[...arr]]
+    // make new arr to not modify state arr
+    const newArr = arr.slice()
+    const steps = [[...newArr]]
     const compareSteps = [[-1, -1]]
-    for (let i = 0; i < arr.length; i++) {
+    for (let i = 0; i < newArr.length; i++) {
         let swapped = false
-        for (let j = i + 1; j < arr.length; j++) {
+        for (let j = i + 1; j < newArr.length; j++) {
             // check if currentIndex data "7" is greater than next index data "1"
             // if it is, swap both items
-            if (arr[i] > arr[j]) {
-                steps.push([...arr])
+            if (newArr[i] > newArr[j]) {
+                steps.push([...newArr])
                 compareSteps.push([i, j])
-                swapArr(arr, i, j)
+                swapArr(newArr, i, j)
                 swapped = true
                 // compareSteps.push([i, j])
             }
             compareSteps.push([i, j])
-            steps.push([...arr])
-            console.log(i, j, "[]", arr[i], arr[j])
+            steps.push([...newArr])
+            console.log(i, j, "[]", newArr[i], newArr[j])
             // if its not, continue.
         }
         if (!swapped) break;
