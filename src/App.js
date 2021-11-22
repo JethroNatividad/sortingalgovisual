@@ -74,10 +74,17 @@ function App() {
     setIsPlaying(true)
   }
 
-  // const getCurrentColor = (index) => {
-  //   const currentColorArr = compareStepsIndexes[currentStepIndex]
+  const getCurrentColor = (index) => {
+    const colors = [theme.palette.success.main, theme.palette.warning.main, theme.palette.secondary.main]
+    const currentColorArr = compareStepsIndexes[currentStepIndex]
+    const colorExist = currentColorArr.indexOf(index)
+    if (colorExist !== -1) {
+      return colors[colorExist]
+    }
+    return theme.palette.primary.main
+    // }
 
-  // }
+  }
 
   const handleAlgoChange = (e) => setCurrentAlgorithm(e.target.value)
   return (
@@ -108,7 +115,8 @@ function App() {
       {/* Show Algorithm */}
       <div className={classes.barContainer}>
         {arr.map((number, i) => (
-          <Bar num={number} color={i === compareStepsIndexes[currentStepIndex][0] ? theme.palette.success.main : i === compareStepsIndexes[currentStepIndex][1] ? theme.palette.warning.main : theme.palette.primary.main} />
+          <Bar key={i} num={number} color={getCurrentColor(i)
+          } />
         ))}
       </div>
 
