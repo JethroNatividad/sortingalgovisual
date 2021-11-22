@@ -19,7 +19,7 @@ function App() {
   const [arr, setArr] = useState(RandomArrayNumberGenerator(15, 50, 200))
   const [steps, setSteps] = useState([[...arr]])
   const [currentStepIndex, setCurrentStepIndex] = useState(0)
-  const [compareStepsIndexes, setCompareStepsIndexes] = useState([-1, -1])
+  const [compareStepsIndexes, setCompareStepsIndexes] = useState([[-1, -1]])
   const [speedMs, setSpeedMs] = useState(50)
   const [isPlaying, setIsPlaying] = useState(false)
 
@@ -73,6 +73,11 @@ function App() {
     setCurrentStepIndex(0)
     setIsPlaying(true)
   }
+
+  // const getCurrentColor = (index) => {
+  //   const currentColorArr = compareStepsIndexes[currentStepIndex]
+
+  // }
 
   const handleAlgoChange = (e) => setCurrentAlgorithm(e.target.value)
   return (
