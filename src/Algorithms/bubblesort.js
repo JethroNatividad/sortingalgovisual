@@ -23,7 +23,7 @@ const bubbleSort = (arr) => {
             // if it is, swap both items
             if (newArr[j] > newArr[j + 1]) {
                 steps.push([...newArr])
-                compareSteps.push([j, j + 1])
+                compareSteps.push([j + 1, j])
                 swapArr(newArr, j, j + 1)
                 swapped = true
                 // compareSteps.push([i, j])
@@ -36,6 +36,7 @@ const bubbleSort = (arr) => {
         if (!swapped) break;
 
     }
+    compareSteps.push([])
     return { steps, compareSteps }
 }
 
