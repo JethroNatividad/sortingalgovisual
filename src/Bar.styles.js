@@ -10,7 +10,8 @@ const useStyles = makeStyles(() => ({
         display: 'flex',
         alignItems: 'end',
         justifyContent: 'center',
-        paddingBottom: '10px'
+        paddingBottom: '10px',
+        transition: 'all 0.1s ease',
     }),
 
 }));
