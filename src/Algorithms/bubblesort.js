@@ -18,19 +18,19 @@ const bubbleSort = (arr) => {
     const compareSteps = [[-1, -1]]
     for (let i = 0; i < newArr.length; i++) {
         let swapped = false
-        for (let j = i + 1; j < newArr.length; j++) {
+        for (let j = 0; j < newArr.length - i; j++) {
             // check if currentIndex data "7" is greater than next index data "1"
             // if it is, swap both items
-            if (newArr[i] > newArr[j]) {
+            if (newArr[j] > newArr[j + 1]) {
                 steps.push([...newArr])
-                compareSteps.push([i, j])
-                swapArr(newArr, i, j)
+                compareSteps.push([j, j + 1])
+                swapArr(newArr, j, j + 1)
                 swapped = true
                 // compareSteps.push([i, j])
             }
-            compareSteps.push([i, j])
+            compareSteps.push([j, j + 1])
             steps.push([...newArr])
-            console.log(i, j, "[]", newArr[i], newArr[j])
+            // console.log(i, j, "[]", newArr[i], newArr[j])
             // if its not, continue.
         }
         if (!swapped) break;
