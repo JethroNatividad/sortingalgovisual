@@ -51,21 +51,28 @@ function selectionSort(arr) {
         // loop starting from second item
         for (let j = i + 1; j < newArr.length; j++) {
             // check if second item lesser than min
+            steps.push([...newArr])
+            compareSteps.push([i - 1, min, j])
             if (newArr[j] < newArr[min]) {
                 min = j
+                steps.push([...newArr])
+                compareSteps.push([i - 1, min, j])
             }
-            steps.push([...newArr])
-            compareSteps.push([i, min, j])
             // if yes, set it to min
 
 
         }
         if (min !== i) {
-            swapArray(newArr, i, min)
+            steps.push([...newArr])
+            compareSteps.push([i, min])
+            swapArr(newArr, i, min)
+            steps.push([...newArr])
+            compareSteps.push([min, i])
         }
         // swap min to current item
     }
-    return arr
+    compareSteps.push([])
+    return { steps, compareSteps }
 }
 
 
