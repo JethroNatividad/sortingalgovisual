@@ -86,7 +86,10 @@ function App() {
 
   }
 
-  const handleAlgoChange = (e) => setCurrentAlgorithm(e.target.value)
+  const handleAlgoChange = (e) => {
+    setCurrentAlgorithm(e.target.value)
+    MakeRandomArr()
+  }
   return (
     <div>
       <AppBar position="static">
