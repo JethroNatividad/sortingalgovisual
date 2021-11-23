@@ -154,7 +154,7 @@ function App() {
             valueLabelDisplay="on"
           />
         </div>
-        <Button variant='outlined' color="primary" onClick={MakeRandomArr}>Randomize</Button>
+        <Button variant='outlined' color="primary" onClick={MakeRandomArr} disabled={isPlaying}>Randomize</Button>
 
       </div>
     </div >
