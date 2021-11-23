@@ -98,6 +98,7 @@ function App() {
             Visual Sorting Algorithms
           </Typography>
           <Select
+            disabled={isPlaying}
             // style={{ color: 'white' }}
             className={classes.select}
             variant='standard'
