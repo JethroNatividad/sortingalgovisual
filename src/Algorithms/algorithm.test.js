@@ -55,6 +55,7 @@ function selectionSort(arr) {
 function insertionSort(arr) {
     // start from next item
     // [2,6,4]
+    const steps = [[...arr]]
     for (let i = 1; i < arr.length; i++) {
         // save arr[i] to currentItem variable
         let currentItem = arr[i];
@@ -69,16 +70,26 @@ function insertionSort(arr) {
             if (arr[j] > currentItem) {
                 // move arr[j] up, arr[j+1] = arr[j]
                 arr[j + 1] = arr[j]
+                steps.push([...arr, [j, i, currentItem]])
             }
-            if (currentItem > arr[j] || j === 0) {
-
+            if (currentItem > arr[j]) {
+                // if currentItem > arr[j]
+                // set currentItem to arr[j+1]
+                arr[j + 1] = currentItem
+                steps.push([...arr, [j, i, currentItem]])
+            }
+            if (j === 0) {
                 // if currentItem > arr[j]
                 // set currentItem to arr[j+1]
                 arr[j] = currentItem
+                steps.push([...arr, [j, i, currentItem]])
             }
+
+            steps.push([...arr, [j, i, currentItem]])
         }
 
     }
+    console.log(steps)
     return arr
 }
 
