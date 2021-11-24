@@ -40,6 +40,47 @@ function selectionSort(arr) {
     }
     return arr
 }
+// i start from 0
+// j start from i + 1
+// [6{i},2{j},4]
+// {j - i} > {j} ?
+// move {j - i} to j
+// [2{j}, 6{i},4]
+
+// [2,6{i},4{j}]
+[6, 2, 4]
+
+
+
+function insertionSort(arr) {
+    // start from next item
+    // [2,6,4]
+    for (let i = 1; i < arr.length; i++) {
+        // save arr[i] to currentItem variable
+        let currentItem = arr[i];
+        // example i = 3 {last index of arr}
+        // compare it to 2, or i - 1 up to zero
+        for (let j = i - 1; j > -1; j--) {
+            // console.log(j, i)
+
+            // example j is 2
+            // compare arr[j] and arr[i]
+            // if arr[j] > currentItem
+            if (arr[j] > currentItem) {
+                // move arr[j] up, arr[j+1] = arr[j]
+                arr[j + 1] = arr[j]
+            }
+            if (currentItem > arr[j] || j === 0) {
+
+                // if currentItem > arr[j]
+                // set currentItem to arr[j+1]
+                arr[j] = currentItem
+            }
+        }
+
+    }
+    return arr
+}
 
 // [6,2,4]
 // min = 6 {0}
@@ -51,5 +92,5 @@ function selectionSort(arr) {
 
 
 // console.log('hi')
-const res = selectionSort([6, 2, 4, 10, 3])
+const res = insertionSort([6, 2, 4, 10, 3])
 console.log(res)
