@@ -1,4 +1,4 @@
 # Todo
 
--   add insertion sort
+-   Fix insertion sort fk it
 -   add merge sort
