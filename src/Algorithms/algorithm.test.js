@@ -52,6 +52,7 @@ function selectionSort(arr) {
 
 
 
+// idk
 function insertionSort(arr) {
     // start from next item
     // [2,6,4]
