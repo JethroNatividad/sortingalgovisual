@@ -2,7 +2,7 @@ import './App.css';
 import React, { useEffect, useState } from 'react'
 import Bar from './Bar';
 import AppBar from '@mui/material/AppBar'
-import { Button, createTheme, FormControl, InputLabel, MenuItem, Select, Slider, Toolbar, Typography } from '@mui/material';
+import { Button, createTheme, MenuItem, Select, Slider, Toolbar, Typography } from '@mui/material';
 import useStyles from './App.styles'
 import RandomArrayNumberGenerator from './Functions/rang'
 import Steps from './Steps';

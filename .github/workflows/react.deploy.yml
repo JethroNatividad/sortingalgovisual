@@ -24,7 +24,11 @@ jobs:
                   cache: 'yarn'
             - run: yarn install
             - run: yarn test
-            - run: yarn run build
+
+            - name: 'Build'
+              run: yarn run build
+              env:
+                  CI: false
 
             - name: Deploy 🚀
               uses: JamesIves/github-pages-deploy-action@4.1.7
