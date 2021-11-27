@@ -58,26 +58,18 @@ function insertionSort(arr) {
     for (let i = 1; i < arr.length; i++) {
         // save arr[i] to currentItem variable
         let currentItem = arr[i];
-        let currentJ = i - 1
+        let j = i - 1
         // example i = 3 {last index of arr}
         // compare it to 2, or i - 1 up to zero
-        for (let j = i - 1; j > -1 && arr[j] > currentItem; j--) {
-            currentJ = j
+        while (j > -1 && arr[j] > currentItem) {
             arr[j + 1] = arr[j]
-            steps.push([...arr, [j, i, currentItem]])
-            // console.log(j, i)
+            steps.push([...arr])
+            j--
 
-            // example j is 2
-            // compare arr[j] and arr[i]
-            // if arr[j] > currentItem
-            // if (arr[j] > currentItem) {
-            //     // move arr[j] up, arr[j+1] = arr[j]
-            // } else {
-            //     break;
-            // }
         }
-        arr[currentJ] = currentItem
-        steps.push([...arr, [currentJ, i, currentItem]])
+        arr[j + 1] = currentItem
+        steps.push([...arr])
+
 
     }
     console.log(steps)
