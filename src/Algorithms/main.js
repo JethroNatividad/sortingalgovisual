@@ -1,5 +1,5 @@
 import bubbleSort from "./bubblesort";
-import insertionSort from "./insertionSort";
+import insertionSort from "./insertionsort";
 import selectionSort from "./selectionsort";
 
 export default {
