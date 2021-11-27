@@ -77,9 +77,12 @@ function App() {
   const getCurrentColor = (index) => {
     const colors = [theme.palette.success.main, theme.palette.warning.main, theme.palette.secondary.main]
     const currentColorArr = compareStepsIndexes[currentStepIndex]
-    const colorExist = currentColorArr.indexOf(index)
-    if (colorExist !== -1) {
-      return colors[colorExist]
+    if (currentColorArr) {
+
+      const colorExist = currentColorArr.indexOf(index)
+      if (colorExist !== -1) {
+        return colors[colorExist]
+      }
     }
     return theme.palette.primary.main
     // }
