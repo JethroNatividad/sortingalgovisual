@@ -21,10 +21,10 @@ jobs:
               uses: actions/setup-node@v2
               with:
                   node-version: ${{ matrix.node-version }}
-                  cache: 'npm'
-            - run: npm ci
-            - run: npm test
-            - run: npm run build
+                  cache: 'yarn'
+            - run: yarn install
+            - run: yarn test
+            - run: yarn run build
 
             - name: Deploy 🚀
               uses: JamesIves/github-pages-deploy-action@4.1.7
