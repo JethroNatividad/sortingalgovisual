@@ -2,7 +2,7 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles(() => ({
     progressContainer: {
-        marginTop: '.5em'
+        marginBottom: '.5em'
     }
 
 }));
