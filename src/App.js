@@ -153,6 +153,7 @@ function App() {
         <div className={classes.sliderContainer}>
 
           <Slider
+            disabled={isPlaying}
             size="small"
             color="primary"
             value={speedMs}
