@@ -10,16 +10,16 @@ const Steps = ({ currentStepIndex, nextStep, prevStep, togglePlayStep, replaySte
             <div>
                 <LinearProgress className={classes.progressContainer} variant="determinate" value={Math.floor((currentStepIndex / (stepsLen - 1)) * 100)} />
             </div>
-            <Button variant="outlined" onClick={skipPreviousStep} disabled={currentStepIndex === 0}><SkipPrevious /></Button>
-            <Button variant="outlined" onClick={prevStep} disabled={currentStepIndex === 0}><ArrowBackIos /></Button>
+            <Button variant="outlined" onClick={skipPreviousStep} disabled={currentStepIndex === 0 || isPlaying}><SkipPrevious /></Button>
+            <Button variant="outlined" onClick={prevStep} disabled={currentStepIndex === 0 || isPlaying}><ArrowBackIos /></Button>
             {
                 isPlaying ? (<Button variant="outlined" onClick={togglePlayStep}><Pause /></Button>)
                     : currentStepIndex === stepsLen - 1 ? (<Button variant="outlined" onClick={replayStep}><Replay /></Button>)
                         : (<Button variant="outlined" onClick={togglePlayStep}><PlayArrow /></Button>)
             }
 
-            <Button variant="outlined" onClick={nextStep} disabled={currentStepIndex === stepsLen - 1}><ArrowForwardIos /></Button>
-            <Button variant="outlined" onClick={skipNextStep} disabled={currentStepIndex === stepsLen - 1}><SkipNext /></Button>
+            <Button variant="outlined" onClick={nextStep} disabled={currentStepIndex === stepsLen - 1 || isPlaying}><ArrowForwardIos /></Button>
+            <Button variant="outlined" onClick={skipNextStep} disabled={currentStepIndex === stepsLen - 1 || isPlaying}><SkipNext /></Button>
         </div>
     )
 }
