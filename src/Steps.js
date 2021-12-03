@@ -1,7 +1,7 @@
 import { Button, LinearProgress } from '@mui/material'
 import React from 'react'
 import useStyles from './Steps.styles'
-import { ArrowBackIos, ArrowForwardIos, PlayArrow, Pause, Replay } from '@mui/icons-material';
+import { ArrowBackIos, ArrowForwardIos, PlayArrow, Pause, Replay, SkipPrevious, SkipNext } from '@mui/icons-material';
 
 const Steps = ({ currentStepIndex, nextStep, prevStep, togglePlayStep, replayStep, stepsLen, isPlaying }) => {
     const classes = useStyles()
@@ -10,6 +10,7 @@ const Steps = ({ currentStepIndex, nextStep, prevStep, togglePlayStep, replaySte
             <div>
                 <LinearProgress className={classes.progressContainer} variant="determinate" value={Math.floor((currentStepIndex / (stepsLen - 1)) * 100)} />
             </div>
+            <Button variant="outlined" onClick={prevStep} disabled={currentStepIndex === 0}><SkipPrevious /></Button>
             <Button variant="outlined" onClick={prevStep} disabled={currentStepIndex === 0}><ArrowBackIos /></Button>
             {
                 isPlaying ? (<Button variant="outlined" onClick={togglePlayStep}><Pause /></Button>)
@@ -18,6 +19,7 @@ const Steps = ({ currentStepIndex, nextStep, prevStep, togglePlayStep, replaySte
             }
 
             <Button variant="outlined" onClick={nextStep} disabled={currentStepIndex === stepsLen - 1}><ArrowForwardIos /></Button>
+            <Button variant="outlined" onClick={prevStep} disabled={currentStepIndex === 0}><SkipNext /></Button>
         </div>
     )
 }
