@@ -65,6 +65,12 @@ function App() {
   const prevStep = () => {
     setCurrentStepIndex(currentStepIndex - 1)
   }
+  const skipPreviousStep = () => {
+    setCurrentStepIndex(0)
+  }
+  const skipNextStep = () => {
+    setCurrentStepIndex(steps.length - 1)
+  }
 
   const togglePlayStep = () => {
     setIsPlaying(!isPlaying)
@@ -137,6 +143,8 @@ function App() {
           stepsLen={steps.length}
           isPlaying={isPlaying}
           replayStep={replayStep}
+          skipPreviousStep={skipPreviousStep}
+          skipNextStep={skipNextStep}
         />
       </div>
 
