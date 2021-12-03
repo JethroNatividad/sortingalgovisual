@@ -7,6 +7,9 @@ const Steps = ({ currentStepIndex, nextStep, prevStep, togglePlayStep, replaySte
     const classes = useStyles()
     return (
         <div>
+            <div>
+                <LinearProgress className={classes.progressContainer} variant="determinate" value={Math.floor((currentStepIndex / (stepsLen - 1)) * 100)} />
+            </div>
             <Button variant="outlined" onClick={prevStep} disabled={currentStepIndex === 0}><ArrowBackIos /></Button>
             {
                 isPlaying ? (<Button variant="outlined" onClick={togglePlayStep}><Pause /></Button>)
@@ -15,9 +18,6 @@ const Steps = ({ currentStepIndex, nextStep, prevStep, togglePlayStep, replaySte
             }
 
             <Button variant="outlined" onClick={nextStep} disabled={currentStepIndex === stepsLen - 1}><ArrowForwardIos /></Button>
-            <div>
-                <LinearProgress className={classes.progressContainer} variant="determinate" value={Math.floor((currentStepIndex / (stepsLen - 1)) * 100)} />
-            </div>
         </div>
     )
 }
