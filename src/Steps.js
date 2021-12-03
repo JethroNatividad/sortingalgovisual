@@ -3,14 +3,14 @@ import React from 'react'
 import useStyles from './Steps.styles'
 import { ArrowBackIos, ArrowForwardIos, PlayArrow, Pause, Replay, SkipPrevious, SkipNext } from '@mui/icons-material';
 
-const Steps = ({ currentStepIndex, nextStep, prevStep, togglePlayStep, replayStep, stepsLen, isPlaying }) => {
+const Steps = ({ currentStepIndex, nextStep, prevStep, togglePlayStep, replayStep, stepsLen, isPlaying, skipNextStep, skipPreviousStep }) => {
     const classes = useStyles()
     return (
         <div>
             <div>
                 <LinearProgress className={classes.progressContainer} variant="determinate" value={Math.floor((currentStepIndex / (stepsLen - 1)) * 100)} />
             </div>
-            <Button variant="outlined" onClick={prevStep} disabled={currentStepIndex === 0}><SkipPrevious /></Button>
+            <Button variant="outlined" onClick={skipPreviousStep} disabled={currentStepIndex === 0}><SkipPrevious /></Button>
             <Button variant="outlined" onClick={prevStep} disabled={currentStepIndex === 0}><ArrowBackIos /></Button>
             {
                 isPlaying ? (<Button variant="outlined" onClick={togglePlayStep}><Pause /></Button>)
@@ -19,7 +19,7 @@ const Steps = ({ currentStepIndex, nextStep, prevStep, togglePlayStep, replaySte
             }
 
             <Button variant="outlined" onClick={nextStep} disabled={currentStepIndex === stepsLen - 1}><ArrowForwardIos /></Button>
-            <Button variant="outlined" onClick={prevStep} disabled={currentStepIndex === 0}><SkipNext /></Button>
+            <Button variant="outlined" onClick={skipNextStep} disabled={currentStepIndex === stepsLen - 1}><SkipNext /></Button>
         </div>
     )
 }
