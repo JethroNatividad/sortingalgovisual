@@ -88,13 +88,13 @@ function merge(arr1, arr2) {
     const result = []
     let i = 0
     let j = 0
-    while (i < arr1.length || j < arr2.length) {
+    while (i < arr1.length && j < arr2.length) {
         if (arr1[i] < arr2[j]) {
             result.push(arr1[i])
-            i += 1
+            i++
         } else {
             result.push(arr2[j])
-            j += 1
+            j++
         }
     }
     return result
@@ -104,4 +104,4 @@ function merge(arr1, arr2) {
 // const res = insertionSort([6, 2, 4, 10, 3])
 // console.log(res)
 
-console.log(merge([1, 6, 2, 8], [7, 3, 72, 31]))
+console.log(merge([4], [1]))
