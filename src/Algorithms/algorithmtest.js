@@ -84,18 +84,33 @@ function insertionSort(arr) {
 // nop
 // swap 2 and 6
 
-function merge(arr1, arr2) {
+function merge(a, b) {
+    // this merges SORTED array
+    // make result empty array
     const result = []
+    // store i and j in variable
     let i = 0
     let j = 0
-    while (i < arr1.length && j < arr2.length) {
-        if (arr1[i] < arr2[j]) {
-            result.push(arr1[i])
+    // while i < a.length && j < b.length
+    while (i < a.length && j < b.length) {
+        // if a[i] less than b[j], add a[i] to result and increment 1 to i
+        if (a[i] < b[j]) {
+            result.push(a[i])
             i++
         } else {
-            result.push(arr2[j])
+            // else add b[j] to result and increment 1 to j
+            result.push(b[j])
             j++
         }
+    }
+    // if a.length > b.length, add all a items starting from i to result
+    if (i < j) {
+        // console.log(a.slice(i))
+        return result.concat(a.slice(i))
+    }
+    // if b.length > a.length, add all b items starting from i to result
+    if (i > j) {
+        return result.concat(b.slice(j))
     }
     return result
 }
@@ -104,4 +119,4 @@ function merge(arr1, arr2) {
 // const res = insertionSort([6, 2, 4, 10, 3])
 // console.log(res)
 
-console.log(merge([4], [1]))
+console.log(merge([4, 6, 9], [1, 2, 3, 8]))
