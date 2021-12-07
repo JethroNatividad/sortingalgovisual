@@ -13,7 +13,7 @@ import { timeout } from './Functions/helpers';
 function App() {
   const theme = createTheme()
   const classes = useStyles()
-  const sortAlgorithms = [{ name: 'Bubble Sort', id: 'bubblesort' }, { name: 'Selection Sort', id: 'selectionsort' }, { name: 'Insertion Sort', id: 'insertionsort' }]
+  const sortAlgorithms = [{ name: 'Bubble Sort', id: 'bubblesort' }, { name: 'Selection Sort', id: 'selectionsort' }, { name: 'Insertion Sort', id: 'insertionsort' }, { name: 'Merge Sort', id: 'mergesort' }]
   const [currentAlgorithm, setCurrentAlgorithm] = useState(sortAlgorithms[0].id)
   // Make random number on first render
   const [arr, setArr] = useState(RandomArrayNumberGenerator(15, 50, 200))
