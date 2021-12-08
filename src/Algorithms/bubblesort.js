@@ -1,13 +1,6 @@
 import swapArr from "../Functions/helpers"
 // make bubble sort
 
-// save all steps of the array to an array
-// bubbleSort([7,1,3,6])
-// [7,1,3,6]
-// [1,7,3,6]
-// [1,3,6,7]
-
-// return [[7,1,3,6], [1,7,3,6], [1,3,6,7]]
 
 const bubbleSort = (arr) => {
     // loop each array data
