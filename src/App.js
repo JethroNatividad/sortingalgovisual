@@ -1,4 +1,3 @@
-import './App.css';
 import React, { useEffect, useState } from 'react'
 import Bar from './Bar';
 import AppBar from '@mui/material/AppBar'
