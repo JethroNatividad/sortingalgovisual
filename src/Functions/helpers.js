@@ -23,13 +23,15 @@ export const merge = (a, b) => {
         }
     }
     // if a.length > b.length, add all a items starting from i to result
-    if (i < j) {
+    while (i < a.length) {
         // console.log(a.slice(i))
-        return result.concat(a.slice(i))
+        result.push(a[i])
+        i++
     }
     // if b.length > a.length, add all b items starting from i to result
-    if (i > j) {
-        return result.concat(b.slice(j))
+    while (j < b.length) {
+        result.push(b[j])
+        j++
     }
     return result
 }
@@ -37,3 +39,5 @@ export const timeout = (ms) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 export default swapArray
+
+
